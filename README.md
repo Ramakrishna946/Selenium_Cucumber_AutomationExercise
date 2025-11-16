@@ -10,7 +10,7 @@
   <h2>Project Details</h2>
 
   <ul>
-    <li>GitHub Repository: <a href="https://github.com/githsem/Selenium_Cucumber_AutomationExercise">https://github.com/githsem/Selenium_Cucumber_AutomationExercise</a></li>
+    <li>GitHub Repository: <a href="https://github.com/Ramakrishna946/Selenium_Cucumber_AutomationExercise.git">https://github.com/Ramakrishna946/Selenium_Cucumber_AutomationExercise.git</a></li>
     <li>Language: Java</li>
     <li>Frameworks and Libraries:
       <ul>
@@ -28,7 +28,7 @@
 
   <ol>
     <li>Clone the repository:
-    <pre><code>git clone https://github.com/githsem/Selenium_Cucumber_AutomationExercise.git</code></pre>
+    <pre><code>git clone https://github.com/Ramakrishna946/Selenium_Cucumber_AutomationExercise.git</code></pre>
     </li>
     <li>Open the project in your preferred Java IDE.
     </li>

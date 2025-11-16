@@ -15,7 +15,7 @@ public class Driver {
 
     private Driver(){}
 
-    private static WebDriver driver;
+    public static WebDriver driver;
 
     public static WebDriver get(){
 

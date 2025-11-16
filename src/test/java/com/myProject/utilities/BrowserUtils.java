@@ -411,4 +411,48 @@ public class BrowserUtils {
         element.sendKeys(text);
     }
 
+
+    public static void closeAdIfPresent() {
+        WebDriver driver = Driver.get();
+        driver.switchTo().defaultContent();
+
+        try {
+            // Find all ad iframes dynamically (Google Ads uses aswift_*)
+            List<WebElement> adFrames = driver.findElements(
+                    By.xpath("//iframe[contains(@id,'aswift_')]")
+            );
+
+            for (WebElement outerFrame : adFrames) {
+                try {
+                    driver.switchTo().frame(outerFrame);
+
+                    // Find inner ad iframe
+                    List<WebElement> innerFrames = driver.findElements(By.tagName("iframe"));
+
+                    for (WebElement inner : innerFrames) {
+                        try {
+                            driver.switchTo().frame(inner);
+
+                            // Look for the dismiss button
+                            WebElement dismiss = driver.findElement(By.cssSelector("span[aria-label='Dismiss']"));
+                            dismiss.click();
+                            System.out.println("Ad dismissed successfully");
+                            driver.switchTo().defaultContent();
+                            return;
+
+                        } catch (Exception ignored) {}
+                        driver.switchTo().parentFrame();
+                    }
+
+                } catch (Exception ignored) {}
+                driver.switchTo().defaultContent();
+            }
+
+        } catch (Exception e) {
+            System.out.println("No ads to close");
+        }
+
+        driver.switchTo().defaultContent();
+    }
+
 }

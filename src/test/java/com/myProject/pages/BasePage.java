@@ -31,4 +31,23 @@ public abstract class BasePage {
         tab.click();
     }
 
+    public void switchToAdFrame() {
+        List<WebElement> frames = Driver.get().findElements(By.tagName("iframe"));
+        for (WebElement frame : frames) {
+            try {
+                String id = frame.getAttribute("id");
+                String name = frame.getAttribute("name");
+
+                if ((id != null && id.contains("aswift")) ||
+                        (name != null && name.contains("aswift"))) {
+
+                    Driver.get().switchTo().frame(frame);
+                    System.out.println("Switched to: " + id);
+                    return;
+                }
+            } catch (Exception ignored) { }
+        }
+    }
+
+
 }

@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.List;
 
@@ -79,8 +80,9 @@ public class Register_StepDefs {
 
     @When("The user clicks Dismiss button")
     public void the_user_clicks_dismiss_button() {
-        Driver.get().switchTo().frame("aswift_3");
+       Driver.get().switchTo().frame("aswift_3");
         registerPage.dismissButton.click();
+
     }
 
     @Then("Verify that Logged in as username is visible")

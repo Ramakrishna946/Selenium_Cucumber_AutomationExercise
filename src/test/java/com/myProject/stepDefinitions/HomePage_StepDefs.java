@@ -7,11 +7,12 @@ import com.myProject.utilities.BrowserUtils;
 import com.myProject.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-
-import java.util.Set;
+import org.openqa.selenium.WebElement;
 
 public class HomePage_StepDefs {
+
     HomePage homePage = new HomePage();
     RegisterPage registerPage = new RegisterPage();
     CategoryProductPage categoryProductPage = new CategoryProductPage();
@@ -38,16 +39,25 @@ public class HomePage_StepDefs {
 
     @When("The user clicks View Product for any product on home page")
     public void the_user_clicks_view_product_for_any_product_on_home_page() {
-        homePage.viewProductButtons.get(0).click();
+
+        BrowserUtils.closeAdIfPresent();
+
+        WebElement productBtn = homePage.viewProductButtons.get(10);
+
+        JavascriptExecutor js = (JavascriptExecutor) Driver.get();
+        js.executeScript("arguments[0].scrollIntoView(true);", productBtn);
+
         try {
-            Driver.get().switchTo().frame("aswift_9");
-            Driver.get().switchTo().frame("ad_iframe");
-            registerPage.dismissButton.click();
+            productBtn.click();
         } catch (Exception e) {
-
+            System.out.println("Normal click failed — using JS click");
+            js.executeScript("arguments[0].click();", productBtn);
         }
-
     }
+
+    // *******************************
+    // CATEGORY SECTION BELOW
+    // *******************************
 
     @Then("Verify that categories are visible on left side bar")
     public void verify_that_categories_are_visible_on_left_side_bar() {
@@ -63,9 +73,12 @@ public class HomePage_StepDefs {
     @When("The user clicks on Dress link under Women category")
     public void the_user_clicks_on_dress_link_under_women_category() {
         homePage.dressCategory.click();
-        Driver.get().switchTo().frame("aswift_9");
-        Driver.get().switchTo().frame("ad_iframe");
-        homePage.dismissButton.click();
+
+        try {
+            Driver.get().switchTo().frame("aswift_9");
+            Driver.get().switchTo().frame("ad_iframe");
+            homePage.dismissButton.click();
+        } catch (Exception ignored) { }
     }
 
     @Then("Verify RECOMMENDED ITEMS are visible")
@@ -92,5 +105,4 @@ public class HomePage_StepDefs {
     public void the_user_scrolls_up_page_to_top() {
         BrowserUtils.scrollToElement(homePage.tabMenu.get(0));
     }
-
 }

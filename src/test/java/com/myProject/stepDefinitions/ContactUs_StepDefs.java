@@ -43,9 +43,10 @@ public class ContactUs_StepDefs {
     @When("The user clicks Home button")
     public void the_user_clicks_home_button() {
         contactUsPage.homeButton.click();
-        Driver.get().switchTo().frame("aswift_2");
-        Driver.get().switchTo().frame("ad_iframe");
-        contactUsPage.dismissButton.click();
+        BrowserUtils.closeAdIfPresent();
+//        Driver.get().switchTo().frame("aswift_2");
+//        Driver.get().switchTo().frame("ad_iframe");
+       // contactUsPage.dismissButton.click();
     }
 
     @Then("Verify that landed to home page successfully")

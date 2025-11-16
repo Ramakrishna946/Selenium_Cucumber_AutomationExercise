@@ -6,15 +6,22 @@ import com.myProject.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+
+import static com.myProject.utilities.Driver.driver;
 
 
 public class Products_StepDefs {
     ProductsPage productsPage = new ProductsPage();
 
     @Then("Verify user is navigated to ALL PRODUCTS page successfully")
-    public void verify_user_is_navigated_to_all_products_page_successfully() {
+    public void verify_user_is_navigated_to_all_products_page_successfully()  {
         String expectedUrl = "https://www.automationexercise.com/products";
         Assert.assertEquals(Driver.get().getCurrentUrl(), expectedUrl);
+
+
     }
 
     @Then("Verify the products list is visible")

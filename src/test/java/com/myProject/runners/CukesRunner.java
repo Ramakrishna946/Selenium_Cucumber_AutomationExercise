@@ -11,9 +11,9 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports.html"
         },
         features = "src/test/resources/features",
-        glue = "com/myProject/stepDefinitions",
+        glue = "com.myProject.stepDefinitions",
         dryRun = false,
-        tags = "@testcase"
+        tags = "@regression"
 
 )
 public class CukesRunner{

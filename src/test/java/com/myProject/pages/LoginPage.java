@@ -1,8 +1,6 @@
 package com.myProject.pages;
 
 import com.myProject.utilities.ConfigurationReader;
-import com.myProject.utilities.Driver;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

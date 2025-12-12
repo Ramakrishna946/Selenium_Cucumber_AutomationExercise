@@ -59,11 +59,15 @@ public class Register_StepDefs {
         String expectedText = "ENTER ACCOUNT INFORMATION";
         String actualText = registerPage.enterAccountText.getText();
         Assert.assertEquals(expectedText, actualText);
+
+
+        System.out.println("This is for testing only");
     }
 
     @When("The user fills in account information")
     public void the_user_fills_in_account_information() {
         registerPage.fillForm();
+        System.out.println("This is for testing only");
     }
 
     @Then("Verify that ACCOUNT CREATED! is visible")
@@ -71,11 +75,13 @@ public class Register_StepDefs {
         String expectedText = "ACCOUNT CREATED!";
         String actualText = registerPage.accountText.getText();
         Assert.assertEquals(expectedText, actualText);
+        System.out.println("This is for testing only");
     }
 
     @When("The user clicks Continue button")
     public void the_user_clicks_continue_button() {
         registerPage.continueButton.click();
+        System.out.println("This is for testing only");
     }
 
     @When("The user clicks Dismiss button")

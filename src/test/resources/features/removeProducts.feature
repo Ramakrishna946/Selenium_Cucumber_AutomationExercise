@@ -1,4 +1,4 @@
-@regression
+git@regression
 Feature: Remove Products
 
   @smoke @remove
